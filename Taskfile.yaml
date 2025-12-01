@@ -13,6 +13,11 @@ tasks:
   install:
     cmds:
       - ./mvnw install -DskipTests
+  # Quick check to get all java docs error/warning
+  # grep "error" to see only the errors
+  javadoc:
+    cmds:
+      - ./mvnw javadoc:javadoc -q
   # Deploy the snapshot to maven central
   deploy:
     cmds:
