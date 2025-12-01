@@ -1,7 +1,6 @@
 package com.combostrap.cli;
 
 
-
 import com.combostrap.type.Lists;
 import com.combostrap.type.Strings;
 
@@ -81,6 +80,11 @@ public class CliCommand extends CliWord {
     // Configuration
     private final Map<String, Object> conf = new HashMap<>();
 
+    /**
+     * The env
+     * We use this variable to inject our own env for test
+     */
+    private Map<String, String> env = System.getenv();
 
     /**
      * Called through the {@link CliCommand#createRoot(String, String[])}
@@ -729,5 +733,15 @@ public class CliCommand extends CliWord {
     }
 
 
+    public void setOsEnv(Map<String, String> testEnv) {
+        this.env = testEnv;
+    }
+
+    /**
+     * @return the env (by default, the operating system env)
+     */
+    public Map<String, String> getEnv() {
+        return this.env;
+    }
 
 }

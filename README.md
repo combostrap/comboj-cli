@@ -133,10 +133,6 @@ cli_name [-g option_argument]...[operand...]
 
 ## Annexes
 
-### Command line syntax on the web
-
-See [Command line syntax on the web](Syntax.md)
-
 ### Others command lines library
 
 * https://picocli.info/

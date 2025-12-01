@@ -99,15 +99,15 @@ public class CliParser {
 
         LOGGER.fine("Parsing the command (" + this.cliCommand.getName() + ")");
 
-    /*
-      Parsing
-     */
+
+        /*
+         * Parsing
+         */
         parseArgsArray();
 
-    /*
-      Checks
-     */
-        // Help
+        /*
+         * Checks
+         */
         // Help check must be before mandatory check
         // Otherwise the mandatory check will stop the process
         checkHelpOption();
@@ -365,7 +365,7 @@ public class CliParser {
             if (cliWord.getEnvName() == null) {
                 envName = cliWord.getId();
             }
-            String env = System.getenv().get(envName);
+            String env = this.cliCommand.getEnv().get(envName);
             if (env != null) {
                 value = Collections.singletonList(env);
             }
@@ -417,10 +417,10 @@ public class CliParser {
         if (value != null) {
 
             /*
-              Flags has always a value.
-              Ie default set or otherwise false
-              <p>
-              If flag is present, opposite of the value
+             * Flags has always a value.
+             * Ie default set or otherwise false
+             * <p>
+             * If flag is present, opposite of the value
              */
             if (cliWord.isFlag()) {
 
@@ -430,7 +430,7 @@ public class CliParser {
                 Boolean booleanValue = cast(value.get(0), Boolean.class, cliWord);
 
                 /*
-                   If flag is present, opposite of the value
+                 * If flag is present, opposite of the value
                  */
                 boolean found = foundWordsInArgs.containsKey(cliWord);
                 if (found) {
@@ -455,7 +455,7 @@ public class CliParser {
         } else {
 
             /*
-              No value
+             * No value
              */
             String defaultValue = cliWord.getDefaultValue();
             if (defaultValue != null) {
@@ -483,8 +483,8 @@ public class CliParser {
             return Casts.cast(value, aClass);
         } catch (CastException e) {
             /*
-              We throw an illegal argument exception
-              to tell that the input was not good
+             * We throw an illegal argument exception
+             * to tell that the input was not good
              */
             throw new IllegalArgumentException("The word " + cliWord + " with the value (" + value + ") is not a " + aClass.getSimpleName());
         }

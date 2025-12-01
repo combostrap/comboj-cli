@@ -21,6 +21,7 @@ public class CliEnvTest {
     CliCommand cliCommand = CliCommand.createRootWithEmptyInput(appName);
     // Change the default app home word
     cliCommand.addProperty(propertyName);
+      cliCommand.setOsEnv(testEnv);
 
     CliParser cliParser = cliCommand.parse();
     Assert.assertEquals("Equal", defaultEnvConfValue, cliParser.getString(propertyName));
